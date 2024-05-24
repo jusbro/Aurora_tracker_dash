@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aurora Predictor Dashboard</title>
+    <!-- Internal CSS to style the page -->
+    <style>
+        /* Styling for the banner at the top of the page */
+        .banner {
+            display: flex;
+            align-items: center;
+            justify-content: normal;
+            background-color: #383737;
+            padding: 8px;
+            border-bottom: 0px solid #050505;
+        }
+        /* Styling for images within the banner */
+        .banner img {
+            height: 150px; /* Adjust the height as needed */
+        }
+
+        /* Styling for the title text within the banner */
+        .banner .title {
+            font-size: 9em;
+            text-align: center;
+            flex-grow: 1;
+            color: #333;
+        }
+        /* Styling for buttons within the button container */
+        .button-container button {
+            text-align: center;
+            font-size: 2em;
+            padding: 10px 20px;
+            margin: 10px;
+            color: #df9393;
+            background-color: #424494;
+        }
+        /* Styling for the large title text on the page */
+        .title-text {
+            font-size: 8em; /* Adjust this value for desired font size */
+            text-align: center;
+            margin-top: 20px;
+            font-weight: bold; /* Optional: make the text bold */
+            color: #dac4c4;
+        }
+        /* Styling for the main text on the page */
+        .text {
+            font-size: 4em; /* Adjust this value for desired font size */
+            text-align: center;
+            margin-top: 20px;
+            font-weight: bold; /* Optional: make the text bold */
+            color: #dada8e;
+        }
+        /* CSS for responsive images */
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        /* CSS for centering text within containers */
+        .image-container {
+            text-align: center;
+        }
+        /* Styling for highlighted red text */
+        .highlight_red {
+            color: red; /* Change this to the desired color */
+            font-weight: bold; /* Optional: make the text bold */
+        }
+        .highlight_green {
+            color: rgb(89, 212, 40); /* Change this to the desired color */
+            font-weight: bold; /* Optional: make the text bold */
+        }
+        .highlight_yellow {
+            color: rgb(221, 224, 18); /* Change this to the desired color */
+            font-weight: bold; /* Optional: make the text bold */
+        }
+        /* CSS for underlined text */
+        .underline {
+            text-decoration: underline;
+        }
+        .warning{
+            display: flex;
+            font-size: xx-small;
+            align-items: center;
+            justify-content: normal;
+            background-color: #e42525;
+            padding: 8px;
+            border-top: 1px solid #050505;
+            border-bottom: 1px solid #050505;
+        }
+        /* CSS for background color of the body */
+        body {
+            background-color: #383737;
+        }
+    </style>
+</head>
+<body>
+    <!-- Banner at the top with company logo and title -->
+    <div class="banner">
+        <img src="company_logo.jpg" alt="company_logo">
+        <div class="title-text">Aurora Prediction Dashboard</div>
+    </div>
+    <div class="warning">
+      <div class="title-text">SOLAR WEATHER WARNING IN EFFECT starting May 23rd</div>
+    </div>
+    <!-- Button container with a button to navigate to another page -->
+    <div class="button-container">
+        <button onclick="location.href='alerts.html'">Alerts & Warnings</button>
+        <button onclick="location.href='extended_forcast.html'">Extended Forcast Details</button>
+        <button onclick="location.href='earth_weather.html'">Earth Weather</button>
+        <button onclick="location.href='drap.html'">Drap Forecast</button>
+        <button onclick="location.href='about.html'">About</button>
+    </div>
+    <!-- Main text indicating aurora visibility -->
+    <div class="text">
+        Will the Aurora be visible <span class="underline">tonight</span>? 
+        <span class="highlight_green">High Odds</span>
+    </div>
+    <div class="text">
+      How about <span class="underline">tomorrow</span>? 
+      <span class="highlight_yellow">Low Odds</span>
+  </div>
+  <div class="text">
+    What about the <span class="underline">day after tomorrow</span>? 
+    <span class="highlight_red">NO</span>
+  </div>
+    <!-- Container for displaying images with captions -->
+    <div class="image-container">
+        <p>Test Image, Test Information</p>
+        <img src="kp_values.png" alt="kp_values.png">
+    </div>
+    <br>
+    <div class="image-container">
+        <p>Test Image, Test Information</p>
+        <img src="swpc_notifications.png" alt="swpc_notifications.png">
+    </div>
+    <br>
+    <div class="image-container">
+        <p>Test Image, Test Information</p>
+        <img src="swpfc_overview.png" alt="swpfc_overview.png">
+    </div>
+    <br>
+    <div class="image-container">
+        <p>Test Image, Test Information</p>
+        <img src="drap_f10_global.png" alt="drap_f10_global.png">
+    </div>
+    <br>
+    <div class="image-container">
+        <p>Test Image, Test Information</p>
+        <img src="drap_f15_global.png" alt="drap_f15_global.png">
+    </div>
+    <br>
+    <div class="image-container">
+        <p>Test Image, Test Information</p>
+        <img src="drap_f20_global.png" alt="drap_f20_global.png">
+    </div>
+    <br>
+    <div class="image-container">
+        <p>Test Image, Test Information</p>
+        <img src="drap_f25_global.png" alt="drap_f25_global.png">
+    </div>
+    <br>
+    <div class="image-container">
+        <p>Test Image, Test Information</p>
+        <img src="drap_f30_global.png" alt="drap_f30_global.png">
+    </div>
+    <br>
+</body>
+</html>
