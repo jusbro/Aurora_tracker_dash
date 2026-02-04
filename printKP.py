@@ -6,7 +6,7 @@ import time
 # --------------------------
 # Setup printer
 # --------------------------
-uart = serial.Serial("/dev/serial0", baudrate=19200, timeout=3000)
+uart = serial.Serial("/dev/serial0", baudrate=19200, timeout=3)
 printer = ThermalPrinter(uart)
 
 # --------------------------
@@ -18,18 +18,12 @@ def print_png(printer, filename, printer_width=384, feed_lines=3):
     Converts to 1-bit B/W, resizes to printer width,
     and sends raw bitmap data to _print_bitmap().
     """
-    # Load image and convert to 1-bit black & white
     img = Image.open(filename).convert("1")
 
     # Resize to printer width
-    wpercent = printer_width / float(img.width)
-    hsize = int(float(img.height) * wpercent)
-    img = img.resize((printer_width, hsize))
-
-    # Center on a white canvas
-    canvas = Image.new("1", (printer_width, img.height), 1)
-    canvas.paste(img, ((printer_width - img.width) // 2, 0))
-    img = canvas
+    scale = printer_width / img.width
+    new_height = int(img.height * scale)
+    img = img.resize((printer_width, new_height))
 
     # Convert to raw bitmap bytes
     data = bytearray()
@@ -38,21 +32,22 @@ def print_png(printer, filename, printer_width=384, feed_lines=3):
             byte = 0
             for bit in range(8):
                 if y + bit < img.height:
-                    pixel = img.getpixel((x, y + bit))
-                    if pixel == 0:  # black pixel
+                    if img.getpixel((x, y + bit)) == 0:  # black
                         byte |= 1 << bit
             data.append(byte)
 
-    # Send raw bitmap to printer
+    # Print bitmap
     printer._print_bitmap(img.width, img.height, data)
     printer.feed(feed_lines)
-    time.sleep(0.2)  # small delay to ensure printing completes
+    time.sleep(0.25)
 
 # --------------------------
 # Example usage
 # --------------------------
-printer.println("Printing Logo Example")
+printer.println(b"Printing Logo Example")  # already bytes
 printer.feed(1)
+
 print_png(printer, "logo.png")
-printer.println("Done!")
+
+printer.println("Done!".encode("utf-8"))
 printer.feed(3)
